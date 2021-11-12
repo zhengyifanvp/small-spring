@@ -4,9 +4,13 @@ import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
 /**
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
- * 公众号：bugstack虫洞栈
- * Create by 小傅哥(fustack)
+ * 和{@link AbstractBeanFactory}类似，都是一个模板类
+ * 实现{@link AbstractBeanFactory}的{@link #createBean(String, BeanDefinition)}方法,作用：根据bean定义创建bean，将bean保存到单例bean map中
+ * 达到了定制化开发
+ * {@link AbstractBeanFactory#getBeanDefinition(String)}方法还未重写
+ * 所以此类依然是一个模板类，只是规定了一个方法，其他类可继承该类，并实现此类未重写的方法
+ *
+ * 作用是当bean不存在时，将bean定义表中的bean拿出放入单例bean容器中
  */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
 
